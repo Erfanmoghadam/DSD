@@ -1,0 +1,42 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity UniversalShiftRegister4bit is 
+	port(
+		clk,reset: in std_logic;
+		en: in std_logic_vector(1 downto 0);
+		input: std_logic_vector(3 downto 0); 
+		output: std_logic_vector(3 downto 0)
+		);
+end UniversalShiftRegister4bit;
+
+architecture behavioral of UniversalShiftRegister4bit is
+	signal r_reg,r_next: std_logic_vector(3 downto 0);
+		begin
+		--State register
+			process(clk,reset)
+				begin
+					if (reset = '1') then
+						r_reg <= (others =>0);
+					elsif (clk' event and clk = '1') then
+						r_reg <= r_next;
+					end if;
+		--Next state logic
+			--Pause
+			if (en = "00") then
+				r_next <= r_reg;
+			--Shift to right
+			elsif(en ="01") then
+				r_next <= d(3) & q_reg(3 downto 1);
+			--Shift to left
+			elsif(en ="10") then
+				r_next <= q_reg(2 downto 0) & d(0);
+			--Parallel load
+			elsif(en ="11") then
+				r_next <= d;
+			end if;
+		--Output
+			output <= r_reg;
+			end process;
+end behavioral;	
