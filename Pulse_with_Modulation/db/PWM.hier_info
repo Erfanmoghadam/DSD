@@ -1,0 +1,22 @@
+|PWM
+clk => buffer_reg.CLK
+clk => r_reg[0].CLK
+clk => r_reg[1].CLK
+clk => r_reg[2].CLK
+clk => r_reg[3].CLK
+reset => buffer_reg.ACLR
+reset => r_reg[0].PRESET
+reset => r_reg[1].PRESET
+reset => r_reg[2].PRESET
+reset => r_reg[3].PRESET
+w[0] => LessThan0.IN4
+w[0] => Equal0.IN3
+w[1] => LessThan0.IN3
+w[1] => Equal0.IN2
+w[2] => LessThan0.IN2
+w[2] => Equal0.IN1
+w[3] => LessThan0.IN1
+w[3] => Equal0.IN0
+pwm_pulse <= buffer_reg.DB_MAX_OUTPUT_PORT_TYPE
+
+
