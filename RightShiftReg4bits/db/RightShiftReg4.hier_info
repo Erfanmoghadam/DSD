@@ -1,0 +1,14 @@
+|RightShiftReg4
+en => ~NO_FANOUT~
+reset => q_reg[0].ACLR
+reset => q_reg[1].ACLR
+reset => q_reg[2].ACLR
+reset => q_reg[3].ACLR
+clk => q_reg[0].CLK
+clk => q_reg[1].CLK
+clk => q_reg[2].CLK
+clk => q_reg[3].CLK
+d => q_reg[3].DATAIN
+q <= q_reg[0].DB_MAX_OUTPUT_PORT_TYPE
+
+
