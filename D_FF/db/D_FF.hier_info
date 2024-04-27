@@ -1,0 +1,8 @@
+|D_FF
+d => q_reg.DATAIN
+clk => q_reg.CLK
+en => q_reg.ENA
+reset => q_reg.ACLR
+q <= q_reg.DB_MAX_OUTPUT_PORT_TYPE
+
+
